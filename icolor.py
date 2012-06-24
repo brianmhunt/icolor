@@ -49,12 +49,12 @@ class ColorTemplate(string.Template):
     (RESET|xDEFAULT|DEFAULT|...)"""
     idpattern = r'(%s)' % "|".join(c for c in ANSI_CODE_MAP.keys())
 
-def cprint(msg, reset=True):
+def cprint(msg, reset=True, template=ColorTemplate):
     """Same as cformat but prints a string.
     """
-    print(cformat(msg))
+    print(cformat(msg, reset, template))
 
-def cformat(msg, reset=True):
+def cformat(msg, reset=True, template=ColorTemplate):
     """
     Transform msg so that colors e.g. #RED, #{BLUE}, etc are mapped to the
     corresponding ANSI escape codes. e.g.
