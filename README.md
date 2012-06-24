@@ -1,5 +1,5 @@
-pycolors
-========
+icolor
+======
 
 Print Python strings with interpolated colors.
 

@@ -1,8 +1,8 @@
 Metadata-Version: 1.0
-Name: pycolors 
+Name: icolor
 Version: 1.0.0
 Summary: ANSI colors interpolated into strings
-Home-page: https://github.com/brianmhunt/pycolors
+Home-page: https://github.com/brianmhunt/icolor
 Author: Brian Hunt
 Author-email: brianmhunt@gmail.com
 License: MIT
