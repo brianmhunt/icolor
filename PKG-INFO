@@ -6,40 +6,40 @@ Home-page: https://github.com/brianmhunt/icolor
 Author: Brian Hunt
 Author-email: brianmhunt@gmail.com
 License: MIT
-Description: Example
-        =======
-            ::
+Description: 
 
-                cformat("This is #REDa red string.")
+    Here is an example:
 
-                cprint("This #BLUEstring#RESET has #GREENTwo#{BOLD}Colors")
+        cformat("This is #REDa red string.")
+
+        cprint("This #BLUEstring#RESET has #GREENTwo#{BOLD}Colors")
 
 
-        ANSI Properties
-        ===============
-        
-          Foreground colors:
-        
-            BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE, DEFAULT
+    ANSI Properties
+    ===============
+    
+      Foreground colors:
+    
+        BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE, DEFAULT
 
-          Background colors:
+      Background colors:
 
-            BLACKBG, REDBG, ..., DEFAULTBG
+        BLACKBG, REDBG, ..., DEFAULTBG
 
+    
+      Attributes:
+    
+        RESET, BOLD, INVERSE, STRIKE, UNBOLD
         
-          Attributes:
-        
-            RESET, BOLD, INVERSE, STRIKE, UNBOLD
-        
-        
-        CHANGES
-        =======
-        
-        
-        1.0 (24.06.2012)
-        ----------------
-        
-        - Initial release.
+    
+    CHANGES
+    =======
+    
+    
+    1.0 (24.06.2012)
+    ----------------
+    
+    - Initial release.
         
         
 Platform: UNKNOWN

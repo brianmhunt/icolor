@@ -34,7 +34,7 @@ ANSI_CODE_MAP = dict(
 
 for _color, _code in _COLOR_MAP.items():
     ANSI_CODE_MAP[_color] = 30 + _code # e.g. RED => 31
-    ANSI_CODE_MAP[_color + "BG"] = 40 + _code # e.g. REDBG = 41
+    ANSI_CODE_MAP["x" + _color] = 40 + _code # e.g. xRED = 41
 
 "A map of the strings to the actual escape sequences"
 ANSI_STRING_MAP = {name:"\033[%dm" % code for name, code in ANSI_CODE_MAP.items()}
@@ -46,7 +46,7 @@ class ColorTemplate(string.Template):
     delimiter = '#'
 
     """All of, and only, the ANSI uppercase escape sequence names e.g. 
-    (RESET|DEFAULTBG|DEFAULT|...)"""
+    (RESET|xDEFAULT|DEFAULT|...)"""
     idpattern = r'(%s)' % "|".join(c for c in ANSI_CODE_MAP.keys())
 
 def cprint(msg, reset=True):
@@ -65,6 +65,9 @@ def cformat(msg, reset=True):
     >>> cformat("This is #BLUEa blue string.", reset=False)
     'This is \\x1b[34ma blue string.'
 
+    >>> cformat("This is #xBLUEa blue background.", reset=False)
+    'This is \\x1b[44ma blue background.'
+
     The returned string is escaped unless reset=False
     """
     ct = ColorTemplate(msg)
@@ -79,7 +82,7 @@ if __name__ == "__main__":
     cprint("""
     Color test:
         Red: #RED red on black#RESET #RED...#RESET
-        Red bg: #{WHITEBG}red on white#RESET
+        Red bg: #{xWHITE}red on white#RESET
         Bold: #{BOLD}Bolded.#RESET
         Not colored: #red #Red ##RED
     """)
