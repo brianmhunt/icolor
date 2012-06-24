@@ -1,0 +1,53 @@
+Metadata-Version: 1.0
+Name: pycolors 
+Version: 1.0.0
+Summary: ANSI colors interpolated into strings
+Home-page: https://github.com/brianmhunt/pycolors
+Author: Brian Hunt
+Author-email: brianmhunt@gmail.com
+License: MIT
+Description: Example
+        =======
+            ::
+
+                cformat("This is #REDa red string.")
+
+                cprint("This #BLUEstring#RESET has #GREENTwo#{BOLD}Colors")
+
+
+        ANSI Properties
+        ===============
+        
+          Foreground colors:
+        
+            BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE, DEFAULT
+
+          Background colors:
+
+            BLACKBG, REDBG, ..., DEFAULTBG
+
+        
+          Attributes:
+        
+            RESET, BOLD, INVERSE, STRIKE, UNBOLD
+        
+        
+        CHANGES
+        =======
+        
+        
+        1.0 (24.06.2012)
+        ----------------
+        
+        - Initial release.
+        
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Terminals
+
