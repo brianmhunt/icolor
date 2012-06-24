@@ -1,32 +1,27 @@
 """
 Interpolation of strings for color printing.
 
-See e.g. http://stackoverflow.com/questions/287871
+Licensed under the MIT License (see LICENSE)
 
-MIT LICENSE
-Copyright (C) 2012 Brian M Hunt
+For more color printing suggestions, see e.g. 
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+    http://stackoverflow.com/questions/287871
 """
 import string
 
 """This is the number that goes in the insignificant decimal position of the map 
 e.g. BLUE => x4, where x is 3 for foreground and 4 for background."""
 _COLOR_MAP = dict(
-    BLACK   = 0,
-    RED     = 1,
-    GREEN   = 2,
-    YELLOW  = 3,
-    BLUE    = 4,
-    MAGENTA = 5,
-    CYAN    = 6,
-    WHITE   = 7,
-    DEFAULT = 9,
-)
+        BLACK   = 0,
+        RED     = 1,
+        GREEN   = 2,
+        YELLOW  = 3,
+        BLUE    = 4,
+        MAGENTA = 5,
+        CYAN    = 6,
+        WHITE   = 7,
+        DEFAULT = 9,
+        )
 
 "A map of the name of an ANSI escape sequence to its number"
 ANSI_CODE_MAP = dict(
@@ -37,9 +32,9 @@ ANSI_CODE_MAP = dict(
         UNBOLD = 22,
         )
 
-for color, code in _COLOR_MAP.items():
-    ANSI_CODE_MAP[color] = 30 + code # e.g. RED => 31
-    ANSI_CODE_MAP[color + "BG"] = 40 + code # e.g. REDBG = 41
+for _color, _code in _COLOR_MAP.items():
+    ANSI_CODE_MAP[_color] = 30 + _code # e.g. RED => 31
+    ANSI_CODE_MAP[_color + "BG"] = 40 + _code # e.g. REDBG = 41
 
 "A map of the strings to the actual escape sequences"
 ANSI_STRING_MAP = {name:"\033[%dm" % code for name, code in ANSI_CODE_MAP.items()}
