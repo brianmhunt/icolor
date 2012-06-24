@@ -12,5 +12,6 @@ Example:
     >>> cformat("This is #BLUEa blue string.", reset=False)
     'This is \\x1b[34ma blue string.'
 
-The `cprint` command.
+Also included is a `cprint` command, which as a convenience prints the
+result of the `cformat` call.
 
