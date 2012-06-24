@@ -3,7 +3,7 @@
 from distutils.core import setup
 
 setup(name='icolor',
-      version='1.0',
+      version='1.1',
       description='Python string interpolation for ANSI color printing',
       author='Brian M Hunt',
       author_email='brianmhunt@gmail.com',
