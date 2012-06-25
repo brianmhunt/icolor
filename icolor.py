@@ -37,17 +37,21 @@ for _color, _code in _COLOR_MAP.items():
     ANSI_CODE_MAP["x" + _color] = 40 + _code # e.g. xRED = 41
 
 "A map of the strings to the actual escape sequences"
-ANSI_STRING_MAP = {name:"\033[%dm" % code for name, code in ANSI_CODE_MAP.items()}
+ANSI_STRING_MAP = { name+";": "\033[%dm" % code 
+                   for name, code in ANSI_CODE_MAP.items()}
 
 class ColorTemplate(string.Template):
-    """A string template where the delimiter is '#' and the idpattern is 
-    the all-caps name of an ANSI escape sequence (e.g. RED, RESET, BOLD, etc.).
+    """A string.Template descendent that maps color codes to ANSI escapes.
+
+    A string template where the delimiter is '#' and the idpattern is 
+    the all-caps name of an ANSI escape sequence followed by a semicolon
+    e.g. #RED;, #RESET;, #BOLD;, etc..
     """
     delimiter = '#'
 
     """All of, and only, the ANSI uppercase escape sequence names e.g. 
-    (RESET|xDEFAULT|DEFAULT|...)"""
-    idpattern = r'(%s)' % "|".join(c for c in ANSI_CODE_MAP.keys())
+    (RESET;|xDEFAULT;|DEFAULT;|...)"""
+    idpattern = r'(%s);' % "|".join(c for c in ANSI_CODE_MAP.keys())
 
 def cprint(msg, reset=True, template=ColorTemplate):
     """Same as cformat but prints a string.
@@ -56,16 +60,16 @@ def cprint(msg, reset=True, template=ColorTemplate):
 
 def cformat(msg, reset=True, template=ColorTemplate):
     """
-    Transform msg so that colors e.g. #RED, #{BLUE}, etc are mapped to the
+    Transform msg so that colors e.g. #RED;, #BLUE;, etc are mapped to the
     corresponding ANSI escape codes. e.g.
 
-    >>> cformat("This is #REDa red string.")
+    >>> cformat("This is #RED;a red string.")
     'This is \\x1b[31ma red string.\\x1b[0m'
 
-    >>> cformat("This is #BLUEa blue string.", reset=False)
+    >>> cformat("This is #BLUE;a blue string.", reset=False)
     'This is \\x1b[34ma blue string.'
 
-    >>> cformat("This is #xBLUEa blue background.", reset=False)
+    >>> cformat("This is #xBLUE;a blue background.", reset=False)
     'This is \\x1b[44ma blue background.'
 
     The returned string is escaped unless reset=False
@@ -74,17 +78,17 @@ def cformat(msg, reset=True, template=ColorTemplate):
     m = ct.safe_substitute(ANSI_STRING_MAP)
 
     if reset:
-        m += ANSI_STRING_MAP['RESET']
+        m += ANSI_STRING_MAP['RESET;']
 
     return m
 
 if __name__ == "__main__":
     cprint("""
     Color test:
-        Red: #RED red on black#RESET #RED...#RESET
-        Red bg: #{xWHITE}red on white#RESET
-        Bold: #{BOLD}Bolded.#RESET
-        Not colored: #red #Red ##RED
+        Red: #RED; red on black#RESET; #RED;...#RESET;
+        Red bg: #xWHITE;red on white#RESET;
+        Bold: #BOLD;Bolded.#RESET;
+        Not colored: #red; #Red; ##RED;
     """)
 
     import doctest

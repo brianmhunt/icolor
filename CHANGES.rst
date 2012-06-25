@@ -1,3 +1,9 @@
+1.2 (24.06.2012)
+----------------
+
+- added semicolon for ending delimited, so "#RED" => "#RED;". More
+  aesthetically pleasing.
+
 1.1 (24.06.2012)
 ----------------
 

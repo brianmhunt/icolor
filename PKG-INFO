@@ -1,18 +1,18 @@
-Metadata-Version: 1.1
+Metadata-Version: 1.2
 Name: icolor
-Version: 1.1
-Summary: ANSI colors interpolated into strings
+Version: 1.2
+Summary: Interpolate ANSI colors in strings
 Home-page: https://github.com/brianmhunt/icolor
 Author: Brian Hunt
 Author-email: brianmhunt@gmail.com
 License: MIT
-Description: 
+Description: Change codes from readable codes e.g. #RED; to ANSI escape codes.
 
     Here is an example:
 
-        cformat("This is #REDa red string.")
+        cformat("This is #RED;a red string.")
 
-        cprint("This #BLUEstring#RESET has #GREENTwo#{BOLD}Colors")
+        cprint("This #BLUE;string#RESET; has #GREEN;Two#BOLD;Colors")
 
 
     ANSI Properties
@@ -30,18 +30,7 @@ Description:
       Attributes:
     
         RESET, BOLD, INVERSE, STRIKE, UNBOLD
-        
-    
-    CHANGES
-    =======
-    
-    
-    1.0 (24.06.2012)
-    ----------------
-    
-    - Initial release.
-        
-        
+
 Platform: UNKNOWN
 Classifier: Development Status :: 5 - Production/Stable
 Classifier: Environment :: Console
